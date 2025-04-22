@@ -19,7 +19,7 @@ class Solution(object):
             max_len = max(max_len, right - left + 1)
 
         return max_len
-
+        
 def main():
     str = input("Enter a string: ")
     solution = Solution()
