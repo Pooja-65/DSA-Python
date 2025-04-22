@@ -7,15 +7,19 @@ Explanation: The answer is "abc", with the length of 3.'''
 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
+        char_set = set()
+        left = 0
         max_len = 0
-        for i in range(len(s)):
-            my_str=s[i]
-            while(i+1<len(s) and s[i+1] not in my_str):
-                my_str = my_str+s[i+1]
-                i+=1
-            if len(my_str)>max_len:
-                max_len = len(my_str)
+
+        for right in range(len(s)):
+            while s[right] in char_set:
+                char_set.remove(s[left])
+                left += 1
+            char_set.add(s[right])
+            max_len = max(max_len, right - left + 1)
+
         return max_len
+
 def main():
     str = input("Enter a string: ")
     solution = Solution()
